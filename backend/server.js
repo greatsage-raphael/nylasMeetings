@@ -28,8 +28,7 @@ Nylas.config({
 
 // Before we start our backend, we should register our frontend
 // as a redirect URI to ensure the auth completes
-const CLIENT_URI =
-  process.env.CLIENT_URI || `http://localhost:${process.env.PORT || 3000}`;
+const CLIENT_URI = process.env.CLIENT_URI;
 Nylas.application({
   redirectUris: [CLIENT_URI],
 }).then((applicationDetails) => {
@@ -55,6 +54,10 @@ openWebhookTunnel({
 }).then((webhookDetails) =>
   console.log('Webhook tunnel registered. Webhook ID: ' + webhookDetails.id)
 );
+
+app.get('/home', (req, res) => {
+  res.status(200).json('Welcome, your app is working well');
+})
 
 // '/nylas/generate-auth-url': This route builds the URL for
 // authenticating users to your Nylas application via Hosted Authentication
