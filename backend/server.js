@@ -145,3 +145,6 @@ app.post(
 
 // Start listening on port 9000
 app.listen(port, () => console.log('App listening on port ' + port));
+
+// Export the Express API
+module.exports = app
